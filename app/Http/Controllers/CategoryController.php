@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class CategoryController extends Controller
 {
@@ -13,6 +15,11 @@ class CategoryController extends Controller
     {
         //dd(Auth::check());
         return view('index');
+    }
+    public function category()
+    {
+        $categories=Category::all();
+        return view('category',['categories'=>$categories]);
     }
 
     public function loginpage()
@@ -63,5 +70,17 @@ class CategoryController extends Controller
         Auth::logout();
         return redirect('/');
     }
+    public function create(Request $request)
+    {
+        //dd($request->all());
+        $request->validate([
+            'name'=>'required'
+        ]);
+        $data=new Category();
+        $data->name=$request->name;
+        $data->save();
+        return redirect('/category');
+    }
+    
     
 }

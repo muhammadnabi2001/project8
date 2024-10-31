@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('index',[CategoryController::class,'index']);
 Route::get('/',[CategoryController::class,'index']);
+Route::get('/category',[CategoryController::class,'category']);
 
 Route::get('login', [CategoryController::class, 'loginpage'])->name('login');
 
@@ -20,3 +21,4 @@ Route::get('post',[PostController::class,'post'])->middleware('auth');
 Route::post('/post', [PostController::class, 'store'])->name('post.store');
 Route::put('/post{post}', [PostController::class, 'update'])->name('post.update');
 Route::delete('/post/{id}',[PostController::class,'delete']);
+Route::post('/createcategory',[CategoryController::class,'create']);

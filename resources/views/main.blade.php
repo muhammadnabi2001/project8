@@ -124,7 +124,7 @@
                                     Posts
                                 </p>
                             </a>
-                            <a href="/talaba" class="nav-link">
+                            <a href="/category" class="nav-link">
                                 <i class="nav-icon fas fa-bars"></i>
                                 <p>
                                     Categories
